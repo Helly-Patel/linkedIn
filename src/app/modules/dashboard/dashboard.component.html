@@ -1,0 +1,56 @@
+<div>
+    <app-add-post></app-add-post>
+</div>
+
+<div>
+
+    <form [formGroup]="commentform">
+        <table style=" border: 1px solid black;width: 100%;">
+            <thead style=" border: 1px solid black;">
+                <tr>
+                    <th>Post Name</th>
+                    <th>Action</th>
+                    <th>Comments</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+       
+       
+        <tbody >
+            <tr *ngFor="let list of postList" style=" border: 1px solid black;">
+                <td>
+                    {{list.content}}<br>
+                    {{list.postedOn  | date: 'dd/MM/yyyy'}}
+                    <button type="button" class="btn btn-default btn-sm" style="cursor: pointer;" (click)="likePost(list)">Like</button>
+                    ( {{list.likeCount}} )
+                    <button type="button" class="btn btn-primary btn-sm" style="cursor: pointer;"  (click) = "Comment(list.id)">Comment</button>
+
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" style="cursor: pointer;" (click)="deletePost(list.id)">Delete</button>
+                </td>
+                <td>
+                    <span *ngIf = "commentArea">
+                        <input formControlName="comment" maxlength="500" class="col-12" rows="2">
+                
+                        <a (click) = "addComment(list.id)">
+                            Save
+                        </a>
+                    </span>
+                    <span *ngFor="let comment of comments">
+                        {{comment.content}}
+                    </span>
+                </td>
+                <td>
+                    <div class="my-profile-pic text-center" >
+                        <img [src]="list.photo" style="width:100px;height:100px;" />
+                    </div>
+                    <!-- {{list.photo}} -->
+                </td>
+            </tr>
+        </tbody>
+       
+    </table>
+    </form>
+</div>
+

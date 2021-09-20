@@ -1,0 +1,59 @@
+<!-- <p>linked-in-post works!</p> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+ >
+<form [formGroup]="linkedInForm">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row panel panel-default">
+                    <div class="col-md-8 col-md-offset-2"> 
+                        <br>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                LinkedIn
+                            </div>
+                            <div class="panel-body">
+                                <br>
+                                <textarea class="col_10" rows="6" formControlName="postText"
+                                name="inputText"  maxlength="2000" style="width: 100%;"></textarea>
+                                <div *ngIf="(postControl.dirty || postControl.touched)  &&  postControl.errors?.required" class="alert-danger">
+                                    Post is required.
+                                </div>
+                                <button type="button" class="btn btn-success" style="cursor: pointer; float: right;" (click) = "savePost()">POST</button>
+                                
+                            </div>
+                        
+                        </div>
+
+
+                        <div class="my-profile-pic text-center" >
+                            <img [src]="imgURL" *ngIf="imgURL" style="width:100%;height:100%;" />
+                        </div>
+                        <div class="drag-upload-btn" > 
+                            <label for="file" style="margin-left: 60px; color:#248beb;">Click to Upload</label>
+                            <input  accept="image/*" class="form-control m-input" id="file" name="file" 
+                            (change)="preview($event)" 
+                             type="file">
+                            
+                        </div>
+                        <!-- <div class="panel panel-default">
+                           
+                            <div class="panel-body">
+                                <br>
+                               <p> this is input text</p>
+                                <button type="button" class="btn btn-default btn-sm" style="cursor: pointer;">Like</button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-primary btn-sm" style="cursor: pointer;">Comment</button>
+                                
+                            </div>
+                        
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</form>
